@@ -1,49 +1,50 @@
 <template>
   <div class="hello">
-    <el-form v-if="!token">
-      <label for="email">email</label>
+    <el-form>
+      <label for="title">title</label>
       <el-input
         size="medium"
-        placeholder="email"
+        placeholder="title"
         prefix-icon="el-icon-search"
-        v-model="user.email"
+        v-model="todo.title"
       >
       </el-input>
-      <label for="password">password</label>
+      <label for="content">content</label>
       <el-input
-        type="password"
+        type="content"
         size="medium"
-        placeholder="password"
+        placeholder="content"
         prefix-icon="el-icon-search"
-        v-model="user.password"
+        v-model="todo.content"
       >
       </el-input>
-      <el-button type="primary" round @click="submitLogin">로그인</el-button>
+      <el-button type="primary" round @click="submitTodo">추가</el-button>
     </el-form>
   </div>
 </template>
 
 <script lang="js">
-import { TokenService } from "@/services/localStorageService";
 import Vue from "vue";
 import { mapActions } from "vuex";
 
 export default Vue.extend({
-  name: "HelloWorld",
+  name: "TodoInsert",
   data: () => {
     return {
-
-      user: {
-        email: "",
-        password: "",
+      todo: {
+        title: "",
+        content: "",
       },
-      token: TokenService.getToken()
     };
   },
   methods: {
-    ...mapActions("authModule", ["login"]),
-    submitLogin ()  {
-      this.login(this.user)
+    ...mapActions("todoModule", ["createTodo"]),
+    submitTodo ()  {
+        this.createTodo(this.todo)
+        this.todo={
+            title:'',
+            content:''
+        }
     },
   },
 });

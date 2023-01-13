@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { authModule } from "./modules/authModule";
+import { todoModule } from "./modules/todoModule";
 
 Vue.use(Vuex);
 
@@ -8,5 +10,5 @@ export default new Vuex.Store({
   getters: {},
   mutations: {},
   actions: {},
-  modules: {},
+  modules: { authModule, todoModule },
 });
