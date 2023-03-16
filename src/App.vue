@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link>
-    </nav>
-    <router-view />
-  </div>
+    <div id="app">
+        <the-layout>
+            <router-view />
+        </the-layout>
+    </div>
 </template>
-
+<script>
+import { mapGetters } from 'vuex';
+import TheLayout from './components/layout/TheLayout.vue';
+export default {
+    components: {
+        TheLayout,
+    },
+    computed: {
+        ...mapGetters('colorPickerModule', ['themeColor', 'textColor']),
+    },
+};
+</script>
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: v-bind('textColor');
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+body {
+    margin: 0;
 }
 </style>

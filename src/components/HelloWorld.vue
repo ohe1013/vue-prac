@@ -1,68 +1,71 @@
 <template>
-  <div class="hello">
-    <el-form v-if="!token">
-      <label for="email">email</label>
-      <el-input
-        size="medium"
-        placeholder="email"
-        prefix-icon="el-icon-search"
-        v-model="user.email"
-      >
-      </el-input>
-      <label for="password">password</label>
-      <el-input
-        type="password"
-        size="medium"
-        placeholder="password"
-        prefix-icon="el-icon-search"
-        v-model="user.password"
-      >
-      </el-input>
-      <el-button type="primary" round @click="submitLogin">로그인</el-button>
-    </el-form>
-  </div>
+    <div class="hello">
+        <el-form v-if="!token">
+            <label for="email">email</label>
+            <el-input
+                size="medium"
+                placeholder="email"
+                prefix-icon="el-icon-search"
+                v-model="user.email"
+            >
+            </el-input>
+            <label for="password">password</label>
+            <el-input
+                type="password"
+                size="medium"
+                placeholder="password"
+                prefix-icon="el-icon-search"
+                v-model="user.password"
+            >
+            </el-input>
+            <el-button
+                type="primary"
+                round
+                @click="submitLogin"
+                >로그인</el-button
+            >
+        </el-form>
+    </div>
 </template>
 
-<script lang="js">
-import { TokenService } from "@/services/localStorageService";
-import Vue from "vue";
-import { mapActions } from "vuex";
+<script>
+import { TokenService } from '@/services/localStorageService';
+import { mapActions } from 'vuex';
 
-export default Vue.extend({
-  name: "HelloWorld",
-  data: () => {
-    return {
-
-      user: {
-        email: "",
-        password: "",
-      },
-      token: TokenService.getToken()
-    };
-  },
-  methods: {
-    ...mapActions("authModule", ["login"]),
-    submitLogin ()  {
-      this.login(this.user)
+export default {
+    name: 'HelloWorld',
+    data: () => {
+        return {
+            user: {
+                email: '',
+                password: '',
+            },
+            token: TokenService.getToken(),
+        };
     },
-  },
-});
+    methods: {
+        ...mapActions('authModule', ['login']),
+        submitLogin() {
+            this.login(this.user);
+        },
+    },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 h3 {
-  margin: 40px 0 0;
+    margin: 40px 0 0;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 a {
-  color: #42b983;
+    color: #42b983;
 }
 </style>

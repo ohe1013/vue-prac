@@ -1,22 +1,17 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-import { TokenService } from "./services/localStorageService";
-import ApiService from "./services/apiService";
-Vue.config.productionTip = false;
-Vue.prototype.$loading = ElementUI.Loading;
-Vue.prototype.$log = console.log;
-Vue.use(ElementUI);
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import { TokenService } from './services/localStorageService';
+import ApiService from './services/apiService';
+
+const app = createApp(App);
+app.config.globalProperties.productionTip = false;
+app.provide('$log', console.log);
 
 if (TokenService.getToken()) {
-  ApiService.setHeader();
+    ApiService.setHeader();
 }
-new Vue({
-  el: "#app",
-  router,
-  store,
-  render: (h) => h(App),
-});
+app.use(router);
+app.use(store);
+app.mount('#app');
