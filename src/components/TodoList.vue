@@ -1,9 +1,6 @@
 <template>
     <ul>
-        <li
-            v-for="(todo, i) in todos"
-            :key="i"
-        >
+        <li v-for="(todo, i) in todos" :key="i">
             <label :for="todo.id"></label>
             <input
                 :id="`title${todo.id}`"
@@ -18,24 +15,14 @@
                 :disabled="!disables.has(todo.id)"
             ></input> -->
             <button @click="confirmDelete(() => deleteTodo(todo.id), todo.id)">삭제</button>
-            <button
-                v-show="!disables.has(todo.id)"
-                @click="add(todo.id)"
-            >
-                수정
-            </button>
+            <button v-show="!disables.has(todo.id)" @click="add(todo.id)">수정</button>
             <button
                 v-show="disables.has(todo.id)"
                 @click="confirmUpdate(() => updateTodo(todo), todo.id)"
             >
                 ✅
             </button>
-            <button
-                v-show="disables.has(todo.id)"
-                @click="cancel(todo.id)"
-            >
-                ❌
-            </button>
+            <button v-show="disables.has(todo.id)" @click="cancel(todo.id)">❌</button>
         </li>
     </ul>
 </template>

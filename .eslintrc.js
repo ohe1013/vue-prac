@@ -24,7 +24,7 @@ module.exports = {
                 semi: true,
                 tabWidth: 4,
                 printWidth: 100,
-                singleAttributePerLine: true,
+                singleAttributePerLine: false,
                 useTabs: false,
                 endOfLine: 'auto',
                 proseWrap: 'preserve',

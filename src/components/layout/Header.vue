@@ -2,13 +2,8 @@
     <div class="header">
         <nav>
             <router-link to="/">Home</router-link> | <router-link to="/login">Login</router-link> |
-            <button
-                class="theme"
-                to="/theme"
-                @click="openColorPicker()"
-            >
-                Theme
-            </button>
+            <router-link to="/map">Map</router-link> | <router-link to="/cart">Cart</router-link> |
+            <button class="theme" to="/theme" @click="openColorPicker()">Theme</button>
         </nav>
         <theme-picker v-if="isView" />
     </div>
