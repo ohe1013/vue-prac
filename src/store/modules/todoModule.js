@@ -19,7 +19,6 @@ const todoModule = {
     actions: {
         fetchTodos: ({ commit }) => {
             todoService.fetchTodos().then((res) => {
-                console.log(res);
                 commit('setTodoList', res);
             });
         },

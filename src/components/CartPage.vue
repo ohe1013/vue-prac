@@ -44,6 +44,7 @@ export default {
         function addItemToCart() {
             if (!itemName.value) return;
             cart.addItem(itemName.value);
+            cart.fetchItem();
             itemName.value = '';
         }
         function clearCart() {
